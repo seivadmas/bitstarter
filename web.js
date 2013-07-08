@@ -1,12 +1,14 @@
 // Modified to read index.html and print whatever it finds there
 
-var greeting = "Hello World, Hola Mundo." // string read from index.html
+// read string from index.html
+var indexContents = fs.readFileSync("index.html", "utf8");
+var indexString = indexContents.toString();
 
 var express = require('express');
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-  response.send(greeting);
+  response.send(indexString);
 });
 
 var port = process.env.PORT || 5000;
